@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Groshop</string>
+    <string name="text_or_sign_in_with">Or Sign In with</string>
+    <string name="button_text_sign_in">Sign In</string>
+    <string name="button_text_forgot_password">Forgot Password?</string>
+    <string name="hint_text_password">Password</string>
+    <string name="hint_text_email">Email</string>
+    <string name="text_fill_up">Fill the field below to Sign In</string>
+    <string name="text_sign_in">Sign In</string>
+    <string name="text_already_have_an_account">Already have an account?</string>
+    <string name="hint_full_name">Full name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_sign_up">Sign Up</string>
+    <string name="text_privacy_policy">I have read and agree to the Privacy Policy</string>
+    <string name="text_or_sign_up_with">Or Sign Up With</string>
+    <string name="text_fill_up_sign_up">Fill the details and create your new account</string>
+    <string name="text_didn_t_have_an_account">Didn’t have an account?</string>
 </resources>
