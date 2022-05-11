@@ -17,6 +17,7 @@ class SignInActivity: AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        supportActionBar?.hide()
         onClick()
     }
 
