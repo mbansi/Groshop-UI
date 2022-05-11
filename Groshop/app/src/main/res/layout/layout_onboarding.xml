@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/text_detail"
+        android:text=""
         android:layout_marginEnd="@dimen/_25sdp"
         android:textAlignment="center"
         android:textColor="@color/colorSecondary"
