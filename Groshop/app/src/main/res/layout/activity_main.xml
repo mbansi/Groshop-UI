@@ -1,54 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSignIn"
-        android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/primary_button_style" />
-
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etEmail"
-        app:layout_constraintTop_toBottomOf="@id/btnSignIn"
-        app:layout_constraintStart_toStartOf="parent"
-        android:hint="Password"
-        style="@style/input_text_style" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSignIn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Sign In"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/base_text_h2" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvFillUp"
-        android:text="Fill the field below to Sign In"
-        app:fontFamily="@font/merriweather"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvSignIn"
-        style="@style/base_text_h3" />
-
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnApple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/apple_icon"
-        android:background="@drawable/circular_button_style"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

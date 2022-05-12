@@ -10,8 +10,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSignUp"
-            style="@style/base_text_h2"
+            style="@style/base_text_h2_raleway_semibold"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/raleway_semibold"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
             android:text="@string/text_sign_up"
@@ -21,9 +22,10 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvFillUp"
-            style="@style/base_text_h3"
+            style="@style/base_text_h3_raleway_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/merriweather_light"
             android:layout_marginTop="@dimen/_4sdp"
             android:text="@string/text_fill_up_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +36,9 @@
             android:id="@+id/etFullName"
             style="@style/input_text_style"
             android:hint="@string/hint_full_name"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@id/etEmail"
             android:layout_marginTop="@dimen/_40sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +49,9 @@
             style="@style/input_text_style"
             android:layout_marginTop="@dimen/_16sdp"
             android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@id/etPassword"
             app:layout_constraintEnd_toEndOf="@id/etFullName"
             app:layout_constraintStart_toStartOf="@id/etFullName"
             app:layout_constraintTop_toBottomOf="@id/etFullName" />
@@ -53,6 +61,9 @@
             style="@style/input_text_style"
             android:layout_marginTop="@dimen/_16sdp"
             android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@id/etConfirmPassword"
             app:layout_constraintEnd_toEndOf="@id/etEmail"
             app:layout_constraintStart_toStartOf="@id/etEmail"
             app:layout_constraintTop_toBottomOf="@id/etEmail"
@@ -63,6 +74,8 @@
             style="@style/input_text_style"
             android:layout_marginTop="@dimen/_16sdp"
             android:hint="@string/hint_confirm_password"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
             app:layout_constraintEnd_toEndOf="@id/etPassword"
             app:layout_constraintStart_toStartOf="@id/etPassword"
             app:layout_constraintTop_toBottomOf="@id/etPassword"
@@ -75,6 +88,7 @@
             app:layout_constraintStart_toStartOf="@id/etConfirmPassword"
             app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
             android:layout_marginTop="@dimen/_12sdp"
+            android:textSize="@dimen/_12sdp"
             android:text="@string/text_privacy_policy"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -90,7 +104,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSignUpWith"
-            style="@style/base_text_h3"
+            style="@style/base_text_h3_raleway_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_24sdp"

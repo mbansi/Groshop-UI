@@ -37,6 +37,7 @@ class OnBoardingActivity : AppCompatActivity() {
         val clickableSpan2: ClickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
                 val signInIntent = Intent(this@OnBoardingActivity,SignInActivity::class.java)
+                signInIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(signInIntent)
             }
 
@@ -53,6 +54,7 @@ class OnBoardingActivity : AppCompatActivity() {
     private fun onClick() {
         binding.btnSignUp.setOnClickListener {
             val signUpIntent = Intent(this,SignUpActivity::class.java)
+            signUpIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(signUpIntent)
         }
     }
