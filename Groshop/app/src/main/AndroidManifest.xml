@@ -25,6 +25,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".onboarding.OnBoardingActivity"/>
         <activity android:name=".authentication.SignUpActivity"/>
+        <activity android:name=".authentication.ForgotPasswordActivity" />
+        <activity android:name=".authentication.VerifyNumberActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

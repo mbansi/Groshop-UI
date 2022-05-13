@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:scaleType="fitXY"
         android:src="@drawable/onboarding_food"
-        app:layout_constraintHeight_percent="0.65"
+        app:layout_constraintHeight_percent="0.7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,12 +25,16 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvOnBoardTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
         android:textColor="@color/colorSecondary"
-        android:textSize="@dimen/_28sdp"
+        android:textSize="@dimen/_25sdp"
         android:text="@string/text_groshop"
+        android:textAlignment="center"
+        android:fontFamily="@font/raleway_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivOnBoarding" />
@@ -39,15 +43,16 @@
         android:id="@+id/tvOnBoardDetail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/text_onboard_details"
-        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:fontFamily="@font/merriweather"
+        android:text="@string/text_detail"
         android:textAlignment="center"
         android:textColor="@color/colorSecondary"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvOnBoardTitle"
+        app:layout_constraintStart_toStartOf="@id/tvOnBoardTitle"
         app:layout_constraintTop_toBottomOf="@id/tvOnBoardTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

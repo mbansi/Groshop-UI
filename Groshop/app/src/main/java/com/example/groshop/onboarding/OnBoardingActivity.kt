@@ -1,7 +1,7 @@
 package com.example.groshop.onboarding
 
-import android.content.Intent
 import android.os.Bundle
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groshop.authentication.SignUpActivity
 import android.text.SpannableString
@@ -11,14 +11,18 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import androidx.core.content.ContextCompat
-import com.example.groshop.R
-import com.example.groshop.authentication.SignInActivity
 import com.example.groshop.databinding.ActivityOnboardingBinding
 import com.google.android.material.tabs.TabLayoutMediator
+
+import com.example.groshop.MainActivity
+import com.example.groshop.R
+import com.example.groshop.authentication.SignInActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
+    private var prevStarted = "prevStarted"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
@@ -26,19 +30,38 @@ class OnBoardingActivity : AppCompatActivity() {
         setContentView(view)
 
         supportActionBar?.hide()
-        binding.vpOnBoarding.adapter = OnBoardingAdapter(OnBoardingModel.getOnBoardData())
-        TabLayoutMediator(binding.tab, binding.vpOnBoarding) { tab, position -> }.attach()
-        setSpannableText()
-        onClick()
+        if (isFirstTime()) {
+            binding.vpOnBoarding.adapter = OnBoardingAdapter(OnBoardingModel.getOnBoardData())
+            TabLayoutMediator(binding.tab, binding.vpOnBoarding) { _, _ -> }.attach()
+            setSpannableText()
+            onClick()
+        }
+    }
+
+    private fun isFirstTime() : Boolean{
+        val sharedpreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE)
+        if (!sharedpreferences.getBoolean(prevStarted, false)) {
+            val editor = sharedpreferences.edit()
+            editor.putBoolean(prevStarted, true)
+            editor.apply()
+            return true
+        } else {
+            val intent = Intent(this@OnBoardingActivity,SignInActivity::class.java)
+            startActivity(intent)
+            finish()
+            return false
+        }
     }
 
     private fun setSpannableText() {
         val spannable = SpannableString(binding.tvAlready.text)
         val clickableSpan2: ClickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
-                val signInIntent = Intent(this@OnBoardingActivity,SignInActivity::class.java)
+
+                val signInIntent = Intent(this@OnBoardingActivity, SignInActivity::class.java)
                 signInIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(signInIntent)
+                finish()
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -56,6 +79,7 @@ class OnBoardingActivity : AppCompatActivity() {
             val signUpIntent = Intent(this,SignUpActivity::class.java)
             signUpIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(signUpIntent)
+            finish()
         }
     }
 }
