@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
+    android:clickable="true"
+    android:id="@+id/llCategory"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCategory"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/orange"
+        android:background="@drawable/bg_category"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/itvCategoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_fruit"
+        android:padding="@dimen/_3sdp"
+        app:layout_constraintTop_toBottomOf="@id/ivCategory"
+        app:layout_constraintStart_toStartOf="@id/ivCategory"
+        android:fontFamily="@font/merriweather"
+        android:textSize="@dimen/_11sdp"
+        android:textColor="@color/colorSecondary"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/ivCategory"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

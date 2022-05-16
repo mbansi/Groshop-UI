@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/_20sdp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:src="@drawable/success_icon"
+        android:padding="@dimen/_23sdp"
+        android:background="@drawable/bg_circular_success"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSuccessful"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ivSuccess"
+        app:layout_constraintEnd_toEndOf="@id/ivSuccess"
+        app:layout_constraintTop_toBottomOf="@id/ivSuccess"
+        android:text="@string/text_successful"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/ralewaybold"
+        android:textSize="@dimen/_28sdp"
+        android:textColor="#689C36"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSuccessfulMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ivSuccess"
+        app:layout_constraintEnd_toEndOf="@id/ivSuccess"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/tvSuccessful"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="#191A19"
+        android:fontFamily="@font/merriweather_light"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReadyToShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ivSuccess"
+        app:layout_constraintEnd_toEndOf="@id/ivSuccess"
+        style="@style/primary_button_style"
+        app:layout_constraintTop_toBottomOf="@id/tvSuccessfulMessage"
+        android:layout_marginTop="@dimen/_50sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:text="@string/button_text_ready_to_shop"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
