@@ -16,9 +16,11 @@
     <style name="input_text_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:padding">@dimen/_14sdp</item>
         <item name="android:background">@drawable/edit_text_style</item>
         <item name="android:textCursorDrawable">@null</item>
+        <item name="fontFamily">@font/merriweather</item>
         <item name="android:textColorHint">@color/textHintColor</item>
     </style>
 
@@ -39,7 +41,7 @@
 <!--        <item name="android:layout_marginEnd">@dimen/_56sdp</item>-->
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/colorSecondary</item>
-        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
     </style>
 
     <style name="edit_input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
@@ -49,4 +51,9 @@
         <item name="android:layout_marginEnd">@dimen/_24sdp</item>
         <item name="android:background">@null</item>
     </style>
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+    </style>
+
 </resources>

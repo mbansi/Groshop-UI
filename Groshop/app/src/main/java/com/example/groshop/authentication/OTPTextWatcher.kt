@@ -1,13 +1,12 @@
 package com.example.groshop.authentication
 
-import android.app.Activity
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import com.example.groshop.R
+import com.example.groshop.authentication.activity.VerifyNumberActivity
 import com.example.groshop.databinding.ActivityVerifyNumberBinding
 
 class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,val context: VerifyNumberActivity) : TextWatcher {
@@ -50,7 +49,6 @@ class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,va
                     imm.hideSoftInputFromWindow(it.windowToken, 0)
                 }
             }
-
         }
     }
 }

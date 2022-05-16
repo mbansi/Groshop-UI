@@ -1,6 +1,6 @@
-package com.example.groshop.authentication
+package com.example.groshop.authentication.activity
 
-import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -8,8 +8,10 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
+import android.view.WindowInsetsController
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
@@ -19,16 +21,20 @@ import com.example.groshop.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpBinding
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        this.getWindow().getDecorView().getWindowInsetsController()
+            ?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
         with(binding.toolbar.customToolbar) {
             this.navigationIcon = AppCompatResources.getDrawable(applicationContext,R.drawable.back_arrow)
             this.setNavigationOnClickListener {
-
                 onBackPressed()
             }
         }
@@ -42,11 +48,7 @@ class SignUpActivity : AppCompatActivity() {
         val spanAlreadyExisting = SpannableString(binding.tvAlreadyExisting.text)
         val clickAlreadyExisting: ClickableSpan = object : ClickableSpan() {
             override fun onClick(p0: View) {
-                val signInIntent = Intent(this@SignUpActivity, SignInActivity::class.java)
-                signInIntent.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(signInIntent)
-                finish()
+                onBackPressed()
             }
 
             override fun updateDrawState(ds: TextPaint) {

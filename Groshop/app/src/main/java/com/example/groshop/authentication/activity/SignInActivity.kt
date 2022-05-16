@@ -1,7 +1,8 @@
-package com.example.groshop.authentication
+package com.example.groshop.authentication.activity
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -10,19 +11,20 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivitySignInBinding
 
-class SignInActivity : AppCompatActivity() {
+class SignInActivity : BaseAcitivity() {
 
     private lateinit var binding: ActivitySignInBinding
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -31,6 +33,8 @@ class SignInActivity : AppCompatActivity() {
         setContentView(view)
 
         supportActionBar?.hide()
+        this.getWindow().getDecorView().getWindowInsetsController()
+            ?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS);
         setSpannableText()
         onClick()
         textChange()
@@ -48,9 +52,9 @@ class SignInActivity : AppCompatActivity() {
     private fun onClick() {
         binding.btnSignIn.setOnClickListener {
             if (validateForm()) {
-                Toast.makeText(applicationContext, "Signed In", Toast.LENGTH_SHORT).show()
+                showToast("Signed In")
             } else {
-                Toast.makeText(applicationContext, "Cannot sign in", Toast.LENGTH_SHORT).show()
+                showToast("Cannot sign in")
             }
         }
         binding.btnForgotPassword.setOnClickListener {
@@ -58,13 +62,13 @@ class SignInActivity : AppCompatActivity() {
             startActivity(forgotPasswordIntent)
         }
         binding.imgBtnFacebook.setOnClickListener {
-            Toast.makeText(applicationContext, "Facebook", Toast.LENGTH_SHORT).show()
+            showToast("Facebook")
         }
         binding.imgBtnApple.setOnClickListener {
-            Toast.makeText(applicationContext, "Apple", Toast.LENGTH_SHORT).show()
+            showToast("Apple")
         }
         binding.imgBtnGoogle.setOnClickListener {
-            Toast.makeText(applicationContext, "Google", Toast.LENGTH_SHORT).show()
+            showToast("Google")
         }
     }
 
@@ -131,9 +135,5 @@ class SignInActivity : AppCompatActivity() {
             else -> return true
         }
         return false
-    }
-
-    private fun getValues(name: EditText): String {
-        return name.text.toString()
     }
 }

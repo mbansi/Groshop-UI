@@ -33,4 +33,13 @@
     <string name="text_number">+62 (302) **** ****</string>
     <string name="text_resend">Resend in 00:50</string>
     <string name="button_text_verify">Verify</string>
+    <string name="text_reset_password_detail">Your new password must be different from your previous password</string>
+    <string name="hint_confirm_new_password">Confirm New Password</string>
+    <string name="button_text_reset_password">Reset Password</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="text_successful">Successful</string>
+    <string name="text_verify">Your account has been verified</string>
+    <string name="button_text_ready_to_shop">Ready To Shop</string>
+    <string name="text_password_change">Your password has changed now</string>
+    <string name="button_text_back_to_home">Back To Home</string>
 </resources>

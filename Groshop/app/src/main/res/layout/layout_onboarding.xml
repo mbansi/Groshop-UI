@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="#00689C36"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -17,9 +18,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/_40sdp"
         app:layout_constraintTop_toBottomOf="@id/ivOnBoarding"
-        app:layout_constraintBottom_toTopOf="@id/tvOnBoardTitle"
         android:layout_marginTop="-20dp"
         android:background="@drawable/bg_curve"/>
 
@@ -28,8 +28,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
         android:textColor="@color/colorSecondary"
         android:textSize="@dimen/_25sdp"
         android:text="@string/text_groshop"
@@ -43,7 +43,7 @@
         android:id="@+id/tvOnBoardDetail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_28sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:fontFamily="@font/merriweather"
         android:text="@string/text_detail"
