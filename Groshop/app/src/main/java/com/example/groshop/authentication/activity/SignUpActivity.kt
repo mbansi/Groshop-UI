@@ -16,10 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivitySignUpBinding
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : BaseAcitivity() {
     private lateinit var binding: ActivitySignUpBinding
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
         setSpannableText()
+        closeKeyBoard(this)
         textChange()
         onClick()
     }
@@ -141,9 +143,5 @@ class SignUpActivity : AppCompatActivity() {
             else -> return true
         }
         return false
-    }
-
-    private fun getValues(name: EditText): String {
-        return name.text.toString()
     }
 }

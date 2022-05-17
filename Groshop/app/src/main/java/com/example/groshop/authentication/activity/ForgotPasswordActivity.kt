@@ -1,7 +1,10 @@
 package com.example.groshop.authentication.activity
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.WindowInsetsController
+import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
@@ -13,6 +16,7 @@ class ForgotPasswordActivity: BaseAcitivity() {
     private var names = ArrayList<String>()
     private var flags = ArrayList<Int>()
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
@@ -25,7 +29,13 @@ class ForgotPasswordActivity: BaseAcitivity() {
                 onBackPressed()
             }
         }
+        this.getWindow().getDecorView().getWindowInsetsController()
+            ?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            );
         setSpinnerData()
+        closeKeyBoard(this)
         onClick()
     }
 
@@ -44,6 +54,8 @@ class ForgotPasswordActivity: BaseAcitivity() {
         binding.btnNext.setOnClickListener {
             if(validateNumber()) {
                 val intent = Intent(this, VerifyNumberActivity::class.java)
+                val number = binding.spCountryCode.selectedItem.toString() + " " + getValues(binding.etMobile)
+
                 startActivity(intent)
             }
         }

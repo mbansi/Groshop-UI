@@ -41,7 +41,7 @@ class OnBoardingActivity : AppCompatActivity() {
         val sharedpreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE)
         if (sharedpreferences.getBoolean(prevStarted, true)) {
             val editor = sharedpreferences.edit()
-            editor.putBoolean(prevStarted, true)
+            editor.putBoolean(prevStarted, false)
             editor.apply()
             return true
         } else {

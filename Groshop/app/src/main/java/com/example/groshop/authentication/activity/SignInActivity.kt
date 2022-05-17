@@ -38,16 +38,10 @@ class SignInActivity : BaseAcitivity() {
         setSpannableText()
         onClick()
         textChange()
-        closeKeyBoard()
+        closeKeyBoard(this)
     }
 
-    private fun closeKeyBoard() {
-        val view = this.currentFocus
-        if (view != null) {
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-    }
+
 
     private fun onClick() {
         binding.btnSignIn.setOnClickListener {

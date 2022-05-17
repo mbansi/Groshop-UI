@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <include
             android:id="@+id/toolbar"
             layout="@layout/custom_toolbar" />
@@ -30,9 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_40sdp"
             android:fontFamily="@font/merriweather_light"
+            android:text="@string/text_code_detail"
             android:textAlignment="center"
             android:textColor="#8A8A8A"
-            android:text="@string/text_code_detail"
             app:layout_constraintEnd_toEndOf="@id/tvVerifyNumberTitle"
             app:layout_constraintStart_toStartOf="@id/tvVerifyNumberTitle"
             app:layout_constraintTop_toBottomOf="@id/tvVerifyNumberTitle" />
@@ -55,79 +57,79 @@
             android:id="@+id/etCode1"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:maxLength="1"
-            android:imeOptions="actionNext"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/bg_otp"
-            android:inputType="number"
-            android:gravity="center"
-            android:textCursorDrawable="@drawable/custom_cursor"
             android:fontFamily="@font/merriweather_bold"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textCursorDrawable="@drawable/custom_cursor"
             android:textSize="@dimen/_24sdp"
-            app:layout_constraintStart_toStartOf="@id/tvVerifyNumberTitle"
             app:layout_constraintEnd_toStartOf="@id/etCode2"
-            app:layout_constraintTop_toBottomOf="@id/tvNumber"/>
+            app:layout_constraintStart_toStartOf="@id/tvVerifyNumberTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvNumber" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etCode2"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:maxLength="1"
-            android:imeOptions="actionNext"
             android:background="@drawable/bg_otp"
-            android:inputType="number"
             android:fontFamily="@font/merriweather_bold"
-            android:textSize="@dimen/_24sdp"
             android:gravity="center"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="1"
             android:textCursorDrawable="@drawable/custom_cursor"
-            app:layout_constraintStart_toEndOf="@id/etCode1"
+            android:textSize="@dimen/_24sdp"
             app:layout_constraintEnd_toStartOf="@id/etCode3"
-            app:layout_constraintTop_toTopOf="@id/etCode1"/>
+            app:layout_constraintStart_toEndOf="@id/etCode1"
+            app:layout_constraintTop_toTopOf="@id/etCode1" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etCode3"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:maxLength="1"
             android:background="@drawable/bg_otp"
+            android:fontFamily="@font/merriweather_bold"
+            android:gravity="center"
             android:imeOptions="actionNext"
             android:inputType="number"
+            android:maxLength="1"
             android:textCursorDrawable="@drawable/custom_cursor"
-            android:gravity="center"
-            android:fontFamily="@font/merriweather_bold"
             android:textSize="@dimen/_24sdp"
-            app:layout_constraintStart_toEndOf="@id/etCode2"
             app:layout_constraintEnd_toStartOf="@id/etCode4"
-            app:layout_constraintTop_toTopOf="@id/etCode1"/>
+            app:layout_constraintStart_toEndOf="@id/etCode2"
+            app:layout_constraintTop_toTopOf="@id/etCode1" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etCode4"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="@dimen/_45sdp"
-            android:imeOptions="actionDone"
-            android:maxLength="1"
             android:background="@drawable/bg_otp"
-            android:inputType="number"
             android:fontFamily="@font/merriweather_bold"
-            android:textSize="@dimen/_24sdp"
             android:gravity="center"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="1"
             android:textCursorDrawable="@drawable/custom_cursor"
-            app:layout_constraintStart_toEndOf="@id/etCode3"
+            android:textSize="@dimen/_24sdp"
             app:layout_constraintEnd_toEndOf="@id/tvVerifyNumberTitle"
-            app:layout_constraintTop_toTopOf="@id/etCode1"/>
+            app:layout_constraintStart_toEndOf="@id/etCode3"
+            app:layout_constraintTop_toTopOf="@id/etCode1" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvResendTimer"
+            style="@style/base_text_h3_raleway_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
-            style="@style/base_text_h3_raleway_semibold"
             android:fontFamily="@font/merriweather"
+            android:text="@string/text_resend"
             android:textColor="#8A8A8A"
             android:textSize="@dimen/_12sdp"
-            android:text="@string/text_resend"
-            app:layout_constraintTop_toBottomOf="@id/etCode4"
-            app:layout_constraintEnd_toEndOf="@id/etCode4"/>
+            app:layout_constraintEnd_toEndOf="@id/etCode4"
+            app:layout_constraintTop_toBottomOf="@id/etCode4" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnVerify"
@@ -141,3 +143,4 @@
             app:layout_constraintTop_toBottomOf="@id/tvResendTimer" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+

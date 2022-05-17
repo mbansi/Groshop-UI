@@ -29,6 +29,7 @@ class VerifyNumberActivity: BaseAcitivity() {
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
                 WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
             )
+        closeKeyBoard(this)
         with(binding.toolbar.customToolbar) {
             this.navigationIcon = AppCompatResources.getDrawable(applicationContext, R.drawable.back_arrow)
             this.setNavigationOnClickListener {

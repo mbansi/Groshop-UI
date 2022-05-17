@@ -42,6 +42,7 @@ class ResetPasswordActivity : BaseAcitivity() {
 
         }
         onClick()
+        closeKeyBoard(this)
         onTextChange()
     }
 
