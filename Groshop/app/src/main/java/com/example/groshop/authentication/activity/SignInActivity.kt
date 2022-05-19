@@ -13,14 +13,25 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivitySignInBinding
+import com.example.groshop.home.activity.DashboardActivity
 
 class SignInActivity : BaseAcitivity() {
+import com.example.groshop.apicalling.ApiResponse
+import com.example.groshop.apicalling.UserLoginSuccessModel
+import com.example.groshop.databinding.ActivitySignInBinding
+import com.example.groshop.home.activity.DashboardActivity
+import com.example.groshop.utils.makeApiCall
+import org.json.JSONObject
+import java.net.URL
+
+class SignInActivity : BaseAcitivity(), ApiResponse {
 
     private lateinit var binding: ActivitySignInBinding
 
@@ -33,22 +44,24 @@ class SignInActivity : BaseAcitivity() {
         setContentView(view)
 
         supportActionBar?.hide()
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS);
         setSpannableText()
         onClick()
         textChange()
         closeKeyBoard(this)
     }
 
-
-
     private fun onClick() {
         binding.btnSignIn.setOnClickListener {
             if (validateForm()) {
-                showToast("Signed In")
+                try {
+                    Thread {
+                        loginUser()
+                    }.start()
+                } catch (exception: Exception) {
+                    print(exception)
+                }
             } else {
-                showToast("Cannot sign in")
+                showToast("Sign In Failed")
             }
         }
         binding.btnForgotPassword.setOnClickListener {
@@ -64,6 +77,14 @@ class SignInActivity : BaseAcitivity() {
         binding.imgBtnGoogle.setOnClickListener {
             showToast("Google")
         }
+    }
+
+    private fun loginUser() {
+        val credential = JSONObject()
+        credential.put("email", binding.etEmail.text)
+        credential.put("password", binding.etPassword.text)
+        val url = URL("https://reqres.in/api/login")
+        makeApiCall("POST",url,this,credential,UserLoginSuccessModel::class.java)
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -129,5 +150,20 @@ class SignInActivity : BaseAcitivity() {
             else -> return true
         }
         return false
+    }
+
+    override fun <T> onSuccessfulResponse(data: T) {
+        val dashboardIntent = Intent(this,DashboardActivity::class.java)
+        startActivity(dashboardIntent)
+        runOnUiThread {
+
+            Toast.makeText(this,data.toString(),Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun <T> onError(message: T) {
+        runOnUiThread {
+            Toast.makeText(this,message.toString(),Toast.LENGTH_SHORT).show()
+        }
     }
 }

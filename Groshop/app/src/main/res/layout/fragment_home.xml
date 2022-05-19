@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar_home"
+        app:layout_constraintBottom_toTopOf="@id/searchHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/bg_edit_text"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintBottom_toTopOf="@id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:queryHint="Search anything here"
+        app:searchIcon="@drawable/search" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/searchHome"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_60sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/vpPromotions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpPromotions"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                app:layout_constraintBottom_toTopOf="@id/tabPromotions"
+                app:layout_constraintEnd_toEndOf="@id/rvCategory"
+                app:layout_constraintStart_toStartOf="@id/rvCategory"
+                app:layout_constraintTop_toBottomOf="@id/rvCategory" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabPromotions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/tabOptions"
+                app:layout_constraintEnd_toEndOf="@id/rvCategory"
+                app:layout_constraintStart_toStartOf="@id/rvCategory"
+                app:layout_constraintTop_toBottomOf="@id/vpPromotions"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/vpOption"
+                app:layout_constraintEnd_toEndOf="@id/rvCategory"
+                app:layout_constraintStart_toStartOf="@id/rvCategory"
+                app:layout_constraintTop_toBottomOf="@id/tabPromotions"
+                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorHeight="@dimen/_2sdp"
+                app:tabMode="scrollable"
+                app:tabPaddingEnd="@dimen/_5sdp"
+                app:tabPaddingStart="@dimen/_2sdp"
+                app:tabSelectedTextColor="@color/colorPrimary"
+                app:tabTextAppearance="@style/tab_text" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vpOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/rvCategory"
+                app:layout_constraintStart_toStartOf="@id/rvCategory"
+                app:layout_constraintTop_toBottomOf="@id/tabOptions" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

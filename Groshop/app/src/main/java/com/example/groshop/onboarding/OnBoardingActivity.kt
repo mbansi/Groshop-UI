@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.groshop.authentication.activity.SignUpActivity
+
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
@@ -71,6 +72,7 @@ class OnBoardingActivity : AppCompatActivity() {
         spannable.setSpan(clickableSpan2, 25, 32, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.tvAlready.text = spannable
         binding.tvAlready.movementMethod = LinkMovementMethod.getInstance()
+
     }
 
     private fun onClick() {

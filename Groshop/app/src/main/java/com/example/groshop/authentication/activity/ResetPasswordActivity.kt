@@ -13,6 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivityResetPasswordBinding
+import com.example.groshop.home.activity.DashboardActivity
 
 class ResetPasswordActivity : BaseAcitivity() {
 
@@ -25,12 +26,6 @@ class ResetPasswordActivity : BaseAcitivity() {
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
         with(binding.toolbar.customToolbar) {
             this.navigationIcon =
                 AppCompatResources.getDrawable(applicationContext, R.drawable.back_arrow)
@@ -106,6 +101,9 @@ class ResetPasswordActivity : BaseAcitivity() {
         alert = builderDialog.show()
         buttonValue.setOnClickListener {
             alert.dismiss()
+            val dashboardIntent = Intent(this, DashboardActivity::class.java)
+            startActivity(dashboardIntent)
+            finish()
         }
     }
 }

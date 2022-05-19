@@ -9,7 +9,11 @@ import com.example.groshop.R
 import com.example.groshop.authentication.activity.VerifyNumberActivity
 import com.example.groshop.databinding.ActivityVerifyNumberBinding
 
-class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,val context: VerifyNumberActivity) : TextWatcher {
+class OTPTextWatcher(
+    val view: View,
+    val binding: ActivityVerifyNumberBinding,
+    val context: VerifyNumberActivity
+) : TextWatcher {
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
     }
@@ -42,10 +46,10 @@ class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,va
             R.id.etCode4 -> if (numberLength == 0) {
                 binding.etCode3.requestFocus()
                 return
-            }
-            else {
+            } else {
                 context.currentFocus?.let {
-                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    val imm =
+                        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(it.windowToken, 0)
                 }
             }

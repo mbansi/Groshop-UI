@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:elevation="@dimen/_40sdp"
+    android:layout_margin="@dimen/_5sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_discount"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_discount_10"
+            android:textSize="@dimen/_12sdp"
+            app:fontFamily="@font/merriweather"
+            android:textColor="@color/neutralWhite"
+            android:padding="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFruit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.55"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/orange"
+            android:scaleType="fitCenter"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFruitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/ivFruit"
+            app:layout_constraintStart_toStartOf="@id/ivFruit"
+            app:layout_constraintBottom_toTopOf="@id/tvQuantity"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:textAlignment="textStart"
+            android:text="@string/text_orange"
+            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/colorSecondary"
+            app:fontFamily="@font/merriweather_bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:text="@string/text_quantity"
+            android:textSize="@dimen/_14sdp"
+            app:fontFamily="@font/merriweather"
+            android:textColor="@color/textHintColor"
+            app:layout_constraintBottom_toTopOf="@id/tvNormalPrice"
+            app:layout_constraintStart_toStartOf="@id/tvFruitName"
+            app:layout_constraintTop_toBottomOf="@id/tvFruitName"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNormalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvQuantity"
+            app:layout_constraintStart_toStartOf="@id/tvFruitName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_8sdp"
+            app:layout_constraintEnd_toStartOf="@id/tvDiscountPrice"
+            android:text="@string/text_normal_price"
+            android:textColor="@color/textHintColor"
+            android:textSize="@dimen/_12sdp"
+            app:fontFamily="@font/merriweather_light"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDiscountPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvQuantity"
+            app:layout_constraintStart_toEndOf="@id/tvNormalPrice"
+            app:layout_constraintEnd_toStartOf="@id/ivCart"
+            app:layout_constraintBottom_toBottomOf="@id/tvNormalPrice"
+            android:text="@string/text_discount_price"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14sdp"
+            app:fontFamily="@font/merriweather_bold" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tvDiscountPrice"
+            app:layout_constraintEnd_toEndOf="@id/ivFruit"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:src="@drawable/cart_icon"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

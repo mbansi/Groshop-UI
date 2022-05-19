@@ -30,4 +30,5 @@ class OnBoardingAdapter(private val onBoardData: ArrayList<OnBoardingModel>) :
 
     inner class ViewHolder(val binding: LayoutOnboardingBinding) :
         RecyclerView.ViewHolder(binding.root)
+
 }

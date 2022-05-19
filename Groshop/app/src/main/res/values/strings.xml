@@ -42,4 +42,14 @@
     <string name="button_text_ready_to_shop">Ready To Shop</string>
     <string name="text_password_change">Your password has changed now</string>
     <string name="button_text_back_to_home">Back To Home</string>
+    <string name="text_orange">Orange</string>
+    <string name="text_discount_10">10%</string>
+    <string name="text_quantity">1 kg</string>
+    <string name="text_normal_price">$7.50</string>
+    <string name="text_discount_price">$6.75</string>
+    <string name="text_offer">Get special offer up to 25%</string>
+    <string name="text_offer_date">at 25 - 31 March 2022</string>
+    <string name="text_fruit">Fruit</string>
+    <string name="greeting_text_home_toolbar">Hello Sharon</string>
+    <string name="intro_text_home_toolbar">what would you buy today</string>
 </resources>

@@ -11,7 +11,7 @@ import com.example.groshop.R
 import com.example.groshop.authentication.adapter.CustomSpinnerAdapter
 import com.example.groshop.databinding.ActivityForgotPasswordBinding
 
-class ForgotPasswordActivity: BaseAcitivity() {
+class ForgotPasswordActivity : BaseAcitivity() {
     private lateinit var binding: ActivityForgotPasswordBinding
     private var names = ArrayList<String>()
     private var flags = ArrayList<Int>()
@@ -24,16 +24,11 @@ class ForgotPasswordActivity: BaseAcitivity() {
         setContentView(view)
 
         with(binding.toolbar.customToolbar) {
-            this.navigationIcon = AppCompatResources.getDrawable(context,R.drawable.back_arrow)
+            this.navigationIcon = AppCompatResources.getDrawable(context, R.drawable.back_arrow)
             this.setNavigationOnClickListener {
                 onBackPressed()
             }
         }
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            );
         setSpinnerData()
         closeKeyBoard(this)
         onClick()
@@ -46,16 +41,14 @@ class ForgotPasswordActivity: BaseAcitivity() {
         flags.add(R.drawable.flag_icon)
         flags.add(R.drawable.flag_icon)
         flags.add(R.drawable.flag_icon)
-        val adapter = CustomSpinnerAdapter(this,flags,names)
+        val adapter = CustomSpinnerAdapter(this, flags, names)
         binding.spCountryCode.adapter = adapter
     }
 
     private fun onClick() {
         binding.btnNext.setOnClickListener {
-            if(validateNumber()) {
+            if (validateNumber()) {
                 val intent = Intent(this, VerifyNumberActivity::class.java)
-                val number = binding.spCountryCode.selectedItem.toString() + " " + getValues(binding.etMobile)
-
                 startActivity(intent)
             }
         }
@@ -63,7 +56,8 @@ class ForgotPasswordActivity: BaseAcitivity() {
 
     private fun validateNumber(): Boolean {
         when {
-            getValues(binding.etMobile).isEmpty() -> binding.mobileInputLayout.error = "Enter mobile number"
+            getValues(binding.etMobile).isEmpty() -> binding.mobileInputLayout.error =
+                "Enter mobile number"
             getValues(binding.etMobile).length < 10 -> {
                 binding.mobileInputLayout.error = "10 digits required"
                 return false
