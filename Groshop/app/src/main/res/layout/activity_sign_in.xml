@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSignIn"
+            style="@style/base_text_h2_raleway_semibold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_24sdp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/button_text_sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFillUp"
+            style="@style/base_text_h3_raleway_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/merriweather_light"
+            android:text="@string/text_fill_up"
+            app:layout_constraintEnd_toEndOf="@id/tvSignIn"
+            app:layout_constraintStart_toStartOf="@id/tvSignIn"
+            app:layout_constraintTop_toBottomOf="@id/tvSignIn" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSignInIllustration"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:src="@drawable/login_illustration"
+            app:layout_constraintEnd_toEndOf="@id/tvSignIn"
+            app:layout_constraintStart_toStartOf="@id/tvSignIn"
+            app:layout_constraintTop_toBottomOf="@id/tvFillUp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            app:layout_constraintEnd_toEndOf="@id/tvSignIn"
+            app:layout_constraintStart_toStartOf="@id/tvSignIn"
+            style="@style/edit_input_layout"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:hintEnabled="false"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/ivSignInIllustration">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                style="@style/input_text_style"
+                android:hint="@string/hint_text_email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:lines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/edit_input_layout"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="@id/emailInputLayout"
+            app:layout_constraintStart_toStartOf="@id/emailInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/emailInputLayout">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                style="@style/input_text_style"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:hint="@string/hint_text_password"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:fontFamily="@font/merriweather"
+            android:text="@string/button_text_forgot_password"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="@id/passwordInputLayout"
+            app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignIn"
+            style="@style/primary_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/button_text_sign_in"
+            app:layout_constraintTop_toBottomOf="@id/btnForgotPassword" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSignInWith"
+            style="@style/base_text_h3_raleway_semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:fontFamily="@font/merriweather"
+            android:text="@string/text_or_sign_in_with"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imgBtnFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/circular_button_style"
+            android:src="@drawable/facebook_icon"
+            app:layout_constraintStart_toStartOf="@id/btnSignIn"
+            app:layout_constraintEnd_toStartOf="@id/imgBtnGoogle"
+            app:layout_constraintTop_toBottomOf="@id/tvSignInWith" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imgBtnGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:background="@drawable/circular_button_style"
+            android:src="@drawable/google_icon"
+            app:layout_constraintStart_toEndOf="@id/imgBtnFacebook"
+            app:layout_constraintEnd_toStartOf="@id/imgBtnApple"
+            app:layout_constraintTop_toTopOf="@id/imgBtnFacebook" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/imgBtnApple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:background="@drawable/circular_button_style"
+            android:src="@drawable/apple_icon"
+            app:layout_constraintEnd_toEndOf="@id/btnSignIn"
+            app:layout_constraintStart_toEndOf="@id/imgBtnGoogle"
+            app:layout_constraintTop_toTopOf="@id/imgBtnFacebook" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNoAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_31sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="@string/text_didn_t_have_an_account"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnSignIn"
+            app:layout_constraintStart_toStartOf="@id/btnSignIn"
+            android:fontFamily="@font/merriweather"
+            app:layout_constraintTop_toBottomOf="@id/imgBtnFacebook" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

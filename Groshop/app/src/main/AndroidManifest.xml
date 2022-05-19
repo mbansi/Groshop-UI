@@ -10,15 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Groshop">
         <activity
-            android:name=".CreateUserActivity"
+            android:name=".authentication.activity.SignInActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".splashscreen.SplashScreenActivity"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".onboarding.OnBoardingActivity"
+            android:theme="@style/SplashTheme"/>
+        <activity android:name=".authentication.activity.SignUpActivity"/>
+        <activity android:name=".authentication.activity.ForgotPasswordActivity" />
+        <activity android:name=".authentication.activity.VerifyNumberActivity" />
+        <activity android:name=".authentication.activity.ResetPasswordActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
