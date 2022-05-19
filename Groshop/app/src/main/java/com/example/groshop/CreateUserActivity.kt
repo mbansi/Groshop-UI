@@ -9,10 +9,11 @@ import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 
-class CreateUserActivity : AppCompatActivity() {
+class CreateUserActivity : AppCompatActivity(), ApiResponse {
 
     private lateinit var binding: ActivityCreateUserBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityCreateUserBinding.inflate(layoutInflater)
         val view = binding.root
@@ -40,26 +41,36 @@ class CreateUserActivity : AppCompatActivity() {
             requestMethod = "POST"
             setRequestProperty("Content-Type", "application/json")
 
-            Log.d("Resp",responseCode.toString())
+            Log.d("Resp", responseCode.toString())
             if (responseCode == 201) {
+                Log.d("RespC", responseCode.toString())
                 outputStream.bufferedWriter().use {
                     it.write(credential.toString())
                 }
                 val response = inputStream.bufferedReader().use {
                     it.readText()
                 }
+                Log.d("RespR", "Response $response")
                 val jsonObject = JSONObject(response)
                 val name = jsonObject.getString("name")
                 val email = jsonObject.getString("email")
                 val password = jsonObject.getString("password")
                 val id = jsonObject.getString("id")
-                runOnUiThread {
-                    val message = name + " " + email + " " + password + " " + id
-                    Toast.makeText(this@CreateUserActivity, message, Toast.LENGTH_SHORT).show()
-                }
+
+                val message = name + " " + email + " " + password + " " + id
+                Toast.makeText(this@CreateUserActivity, message, Toast.LENGTH_SHORT).show()
+
             } else {
                 println(errorStream)
             }
         }
+    }
+
+    override fun onSuccessfulResponse(data: UserModel) {
+
+    }
+
+    override fun onError(message: String) {
+       
     }
 }
