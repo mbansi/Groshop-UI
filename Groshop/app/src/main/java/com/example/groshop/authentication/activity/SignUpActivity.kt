@@ -9,25 +9,23 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import android.view.WindowInsetsController
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
-import com.example.groshop.apicalling.ApiResponse
-import com.example.groshop.apicalling.UserRegisterSuccessModel
 import com.example.groshop.databinding.ActivitySignUpBinding
-import com.example.groshop.home.activity.DashboardActivity
-import com.example.groshop.utils.makeApiCall
+import com.example.groshop.viewmodel.SignUpViewModel
 import org.json.JSONObject
 import java.net.URL
 
-class SignUpActivity : BaseAcitivity(), ApiResponse {
+class SignUpActivity : BaseAcitivity() {
 
     private lateinit var binding: ActivitySignUpBinding
+    private val viewModel: SignUpViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,9 +43,27 @@ class SignUpActivity : BaseAcitivity(), ApiResponse {
         setSpannableText()
         closeKeyBoard(this)
         textChange()
+        observerViewModel()
         onClick()
     }
 
+    private fun observerViewModel() {
+        viewModel.userLogin.observe(this) {
+            runOnUiThread {
+                binding.progBar.visibility = View.GONE
+                Toast.makeText(this@SignUpActivity, it.toString(), Toast.LENGTH_SHORT).show()
+                val forgotPasswordIntent = Intent(this, ForgotPasswordActivity::class.java)
+                startActivity(forgotPasswordIntent)
+            }
+
+        }
+        viewModel.userFail.observe(this) {
+            runOnUiThread {
+                binding.progBar.visibility = View.GONE
+                Toast.makeText(this@SignUpActivity, it.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     private fun setSpannableText() {
         val spanAlreadyExisting = SpannableString(binding.tvAlreadyExisting.text)
@@ -86,10 +102,8 @@ class SignUpActivity : BaseAcitivity(), ApiResponse {
         val credential = JSONObject()
         credential.put("email", binding.etEmail.text)
         credential.put("password", binding.etPassword.text)
-
         val url = URL("https://reqres.in/api/register")
-
-        makeApiCall("POST", url, this, credential, UserRegisterSuccessModel::class.java)
+        viewModel.signUpUser(url, credential)
     }
 
     private fun textChange() {
@@ -135,7 +149,8 @@ class SignUpActivity : BaseAcitivity(), ApiResponse {
 
     private fun onClick() {
         binding.btnSignUp.setOnClickListener {
-            if(validateForm()) {
+            if (validateForm()) {
+                binding.progBar.visibility = View.VISIBLE
                 try {
                     Thread {
                         createUserRequest()
@@ -143,8 +158,7 @@ class SignUpActivity : BaseAcitivity(), ApiResponse {
                 } catch (exception: Exception) {
                     print(exception)
                 }
-            }
-            else {
+            } else {
                 showToast("Sign up Failed")
             }
 
@@ -181,19 +195,4 @@ class SignUpActivity : BaseAcitivity(), ApiResponse {
         }
         return false
     }
-
-    override fun <T> onSuccessfulResponse(data: T) {
-        val forgotPasswordIntent = Intent(this, ForgotPasswordActivity::class.java)
-        startActivity(forgotPasswordIntent)
-        runOnUiThread {
-            Toast.makeText(this@SignUpActivity, data.toString(), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun <T> onError(message: T) {
-        runOnUiThread {
-            Toast.makeText(this@SignUpActivity, message.toString(), Toast.LENGTH_SHORT).show()
-        }
-    }
-
 }

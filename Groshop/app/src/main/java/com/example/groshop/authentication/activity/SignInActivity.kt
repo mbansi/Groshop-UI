@@ -11,9 +11,9 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
@@ -21,19 +21,14 @@ import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivitySignInBinding
 import com.example.groshop.home.activity.DashboardActivity
-
-class SignInActivity : BaseAcitivity() {
-import com.example.groshop.apicalling.ApiResponse
-import com.example.groshop.apicalling.UserLoginSuccessModel
-import com.example.groshop.databinding.ActivitySignInBinding
-import com.example.groshop.home.activity.DashboardActivity
-import com.example.groshop.utils.makeApiCall
+import com.example.groshop.viewmodel.SignInViewModel
 import org.json.JSONObject
 import java.net.URL
 
-class SignInActivity : BaseAcitivity(), ApiResponse {
+class SignInActivity : BaseAcitivity() {
 
     private lateinit var binding: ActivitySignInBinding
+    private val viewModel: SignInViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,12 +42,32 @@ class SignInActivity : BaseAcitivity(), ApiResponse {
         setSpannableText()
         onClick()
         textChange()
+        observerViewModel()
         closeKeyBoard(this)
+    }
+
+    private fun observerViewModel() {
+        viewModel.userLogin.observe(this) {
+            runOnUiThread {
+                binding.progBar.visibility = View.GONE
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                val dashboardIntent = Intent(this, DashboardActivity::class.java)
+                startActivity(dashboardIntent)
+            }
+        }
+
+        viewModel.userFail.observe(this) {
+            runOnUiThread {
+                binding.progBar.visibility = View.GONE
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun onClick() {
         binding.btnSignIn.setOnClickListener {
             if (validateForm()) {
+                binding.progBar.visibility = View.VISIBLE
                 try {
                     Thread {
                         loginUser()
@@ -84,8 +99,9 @@ class SignInActivity : BaseAcitivity(), ApiResponse {
         credential.put("email", binding.etEmail.text)
         credential.put("password", binding.etPassword.text)
         val url = URL("https://reqres.in/api/login")
-        makeApiCall("POST",url,this,credential,UserLoginSuccessModel::class.java)
+        viewModel.signInUser(url, credential)
     }
+
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         if (currentFocus != null) {
@@ -150,20 +166,5 @@ class SignInActivity : BaseAcitivity(), ApiResponse {
             else -> return true
         }
         return false
-    }
-
-    override fun <T> onSuccessfulResponse(data: T) {
-        val dashboardIntent = Intent(this,DashboardActivity::class.java)
-        startActivity(dashboardIntent)
-        runOnUiThread {
-
-            Toast.makeText(this,data.toString(),Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    override fun <T> onError(message: T) {
-        runOnUiThread {
-            Toast.makeText(this,message.toString(),Toast.LENGTH_SHORT).show()
-        }
     }
 }

@@ -103,6 +103,15 @@
             android:text="@string/button_text_sign_in"
             app:layout_constraintTop_toBottomOf="@id/btnForgotPassword" />
 
+        <ProgressBar
+            android:id="@+id/progBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSignInWith"
             style="@style/base_text_h3_raleway_semibold"

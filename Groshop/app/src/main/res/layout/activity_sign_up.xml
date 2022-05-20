@@ -138,6 +138,16 @@
             app:layout_constraintEnd_toEndOf="@id/confirmPasswordInputLayout"
             app:layout_constraintStart_toStartOf="@id/cbPrivacy"/>
 
+        <ProgressBar
+            android:id="@+id/progBar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSignUpWith"
             style="@style/base_text_h3_raleway_semibold"
