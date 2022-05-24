@@ -29,11 +29,6 @@ class ForgotPasswordActivity: BaseAcitivity() {
                 onBackPressed()
             }
         }
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            );
         setSpinnerData()
         closeKeyBoard(this)
         onClick()
@@ -54,8 +49,6 @@ class ForgotPasswordActivity: BaseAcitivity() {
         binding.btnNext.setOnClickListener {
             if(validateNumber()) {
                 val intent = Intent(this, VerifyNumberActivity::class.java)
-                val number = binding.spCountryCode.selectedItem.toString() + " " + getValues(binding.etMobile)
-
                 startActivity(intent)
             }
         }

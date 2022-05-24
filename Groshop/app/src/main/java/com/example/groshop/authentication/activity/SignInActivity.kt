@@ -33,8 +33,6 @@ class SignInActivity : BaseAcitivity() {
         setContentView(view)
 
         supportActionBar?.hide()
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(APPEARANCE_LIGHT_STATUS_BARS, APPEARANCE_LIGHT_STATUS_BARS);
         setSpannableText()
         onClick()
         textChange()

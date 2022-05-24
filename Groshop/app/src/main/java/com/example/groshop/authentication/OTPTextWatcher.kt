@@ -9,7 +9,11 @@ import com.example.groshop.R
 import com.example.groshop.authentication.activity.VerifyNumberActivity
 import com.example.groshop.databinding.ActivityVerifyNumberBinding
 
-class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,val context: VerifyNumberActivity) : TextWatcher {
+class OTPTextWatcher(
+    val view: View,
+    val binding: ActivityVerifyNumberBinding,
+    val context: VerifyNumberActivity
+) : TextWatcher {
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
     }
@@ -19,35 +23,24 @@ class OTPTextWatcher(val view: View, val binding: ActivityVerifyNumberBinding,va
     }
 
     override fun afterTextChanged(p0: Editable?) {
-        val numberLength = p0.toString().length
+        val count = p0.toString().length
         when (view.id) {
-            R.id.etCode1 -> if (numberLength == 1) {
+            R.id.etCode1 -> if (count == 1) {
                 binding.etCode2.requestFocus()
-                return
             }
-            R.id.etCode2 -> if (numberLength == 0) {
-                binding.etCode1.requestFocus()
-                return
-            } else {
+
+            R.id.etCode2 -> if (count == 1) {
                 binding.etCode3.requestFocus()
-                return
             }
-            R.id.etCode3 -> if (numberLength == 0) {
-                binding.etCode2.requestFocus()
-                return
-            } else {
+
+            R.id.etCode3 -> if (count == 1) {
                 binding.etCode4.requestFocus()
-                return
             }
-            R.id.etCode4 -> if (numberLength == 0) {
-                binding.etCode3.requestFocus()
-                return
-            }
-            else {
-                context.currentFocus?.let {
-                    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(it.windowToken, 0)
-                }
+
+            R.id.etCode4 -> context.currentFocus?.let {
+                val imm =
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(it.windowToken, 0)
             }
         }
     }

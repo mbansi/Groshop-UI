@@ -3,7 +3,7 @@ package com.example.groshop.authentication.activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.WindowInsetsController
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -24,11 +24,7 @@ class VerifyNumberActivity: BaseAcitivity() {
         binding = ActivityVerifyNumberBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
+
         closeKeyBoard(this)
         with(binding.toolbar.customToolbar) {
             this.navigationIcon = AppCompatResources.getDrawable(applicationContext, R.drawable.back_arrow)
@@ -43,6 +39,35 @@ class VerifyNumberActivity: BaseAcitivity() {
         binding.etCode3.addTextChangedListener(OTPTextWatcher(binding.etCode3,binding,this))
         binding.etCode4.addTextChangedListener(OTPTextWatcher(binding.etCode4,binding,this))
 
+        binding.etCode2.setOnKeyListener { view, i, keyEvent ->
+            if(i == KeyEvent.KEYCODE_DEL) {
+                //on backspace
+                binding.etCode1.requestFocus()
+                binding.etCode1.text = null
+
+            }
+            return@setOnKeyListener true
+        }
+
+        binding.etCode3.setOnKeyListener { view, i, keyEvent ->
+            if(i == KeyEvent.KEYCODE_DEL) {
+                //on backspace
+                binding.etCode2.requestFocus()
+                binding.etCode2.text = null
+
+            }
+            return@setOnKeyListener true
+        }
+
+        binding.etCode4.setOnKeyListener { view, i, keyEvent ->
+            if(i == KeyEvent.KEYCODE_DEL) {
+                //on backspace
+                binding.etCode3.requestFocus()
+                binding.etCode3.text = null
+
+            }
+            return@setOnKeyListener true
+        }
         onClick()
     }
 
@@ -69,5 +94,4 @@ class VerifyNumberActivity: BaseAcitivity() {
             alert.dismiss()
         }
     }
-
 }

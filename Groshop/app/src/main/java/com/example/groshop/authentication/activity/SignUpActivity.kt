@@ -28,11 +28,6 @@ class SignUpActivity : BaseAcitivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        this.getWindow().getDecorView().getWindowInsetsController()
-            ?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
         with(binding.toolbar.customToolbar) {
             this.navigationIcon = AppCompatResources.getDrawable(applicationContext,R.drawable.back_arrow)
             this.setNavigationOnClickListener {
