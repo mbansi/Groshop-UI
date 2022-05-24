@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Groshop</string>
+    <string name="button_text_sign_up">Sign Up</string>
+    <string name="text_already_have_an_account_sign_in">Already have an account? Sign In</string>
+    <string name="text_groshop">Groshop</string>
+    <string name="text_detail">No more waiting for your groceries to be delivered</string>
 </resources>
