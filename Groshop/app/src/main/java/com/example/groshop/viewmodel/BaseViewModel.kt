@@ -2,26 +2,40 @@ package com.example.groshop.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.groshop.apicalling.ApiResponse
-import com.example.groshop.apicalling.RetrofitApiResponse
 import com.example.groshop.apicalling.UserFailModel
-import com.example.groshop.utils.BASE_URL
 import com.google.gson.Gson
 import org.json.JSONObject
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.net.HttpURLConnection
 import java.net.URL
 
 open class BaseViewModel : ViewModel() {
 
-    fun <T> makeRetrofitApiCall( data: T,response: RetrofitApiResponse)  {
+    fun <T> makeRetrofitApiCall(data: Call<T>, apiCallback: ApiResponse)  {
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        data.enqueue(object : Callback<T> {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
 
+
+                if (response.body() != null) {
+                    apiCallback.onSuccessfulResponse(response.body())
+                }
+                else {
+                    response.errorBody()?.let {
+                        val jsonObj = JSONObject(it.charStream().readText())
+                        val errorResponse = jsonObj.getString("error")
+                        apiCallback.onError(UserFailModel(errorResponse))
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<T>, t: Throwable) {
+                apiCallback.onError(UserFailModel(t.toString()))
+            }
+        })
     }
 
     fun <T> makeApiCall(

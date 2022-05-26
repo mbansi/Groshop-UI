@@ -98,8 +98,10 @@ class SignInActivity : BaseAcitivity() {
         val credential = JSONObject()
         credential.put("email", binding.etEmail.text)
         credential.put("password", binding.etPassword.text)
-        val url = URL("https://reqres.in/api/login")
-        viewModel.signInUser(url, credential)
+     //   val url = URL("https://reqres.in/api/login")
+     //   viewModel.signInUser(url, credential)
+        viewModel.signInUserRetrofit(getValues(binding.etEmail),getValues(binding.etPassword))
+
     }
 
 

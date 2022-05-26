@@ -19,6 +19,8 @@ import com.example.groshop.BaseAcitivity
 import com.example.groshop.R
 import com.example.groshop.databinding.ActivitySignUpBinding
 import com.example.groshop.viewmodel.SignUpViewModel
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import org.json.JSONObject
 import java.net.URL
 
@@ -102,8 +104,11 @@ class SignUpActivity : BaseAcitivity() {
         val credential = JSONObject()
         credential.put("email", binding.etEmail.text)
         credential.put("password", binding.etPassword.text)
-        val url = URL("https://reqres.in/api/register")
-        viewModel.signUpUser(url, credential)
+
+        val requestBody: RequestBody = RequestBody.create(MediaType.parse("application/json"), credential.toString())
+        viewModel.signUpRetrofit(requestBody)
+//        val url = URL("https://reqres.in/api/register")
+//        viewModel.signUpUser(url, credential)
     }
 
     private fun textChange() {
@@ -153,7 +158,8 @@ class SignUpActivity : BaseAcitivity() {
                 binding.progBar.visibility = View.VISIBLE
                 try {
                     Thread {
-                        createUserRequest()
+                       createUserRequest()
+
                     }.start()
                 } catch (exception: Exception) {
                     print(exception)
